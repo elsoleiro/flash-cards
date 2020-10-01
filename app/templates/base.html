@@ -8,7 +8,11 @@
     </head>
     <body>
         <div>flash cards: <a href="{{ url_for('index') }}">home</a>
+        {% if current_user.is_anonymous %}
             <a href="{{ url_for('login') }}">login</a>
+        {% else %}
+            <a href="{{ url_for('logout') }}">logout</a>
+        {% endif %}
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
