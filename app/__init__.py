@@ -9,7 +9,7 @@ app.config.from_object(Config) # config items accessed via dictionary syntax
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
-login.login _view = 'login'
+login.login_view = 'login'
 
 from app import routes, models
 

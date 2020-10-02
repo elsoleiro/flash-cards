@@ -7,6 +7,7 @@ plus other optional args
 from datetime import datetime
 from app import db, login
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 
 """
 the extension (flask-login) expects a configuration as a user loader function
@@ -28,6 +29,12 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<user {}>'.format(self.username)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 class Card(db.Model):
     id = db.Column(db.Integer, primary_key=True)
