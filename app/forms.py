@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('remember me')
     submit = SubmitField('sign in')
 
-class LoginForm(FlaskForm):
+class RegistrationForm(FlaskForm):
     username = StringField('username', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired(), Email()])
     password= StringField('password', validators=[DataRequired()])
@@ -21,5 +21,13 @@ class LoginForm(FlaskForm):
     submit = SubmitField('register')
 
     def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError('use a different username.')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('please use a different email address.')
 
 
