@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app
-from app.forms import LoginForm
+from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
@@ -10,19 +10,7 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 @login_required
 def index():
-    user = {'username': 'Elias'}
-    posts = [
-        {
-            'author': {'username': 'Jimmy'},
-            'body': 'Hello there'
-        },
-        {
-            'author': {'username': 'Bob'},
-            'body': 'Hello there'
-        }
-        ]
-        
-    return render_template('index.html', title="home", user=user)
+    return render_template('index.html', title="home")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -48,7 +36,7 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if current_user_is_authenticated:
+    if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
