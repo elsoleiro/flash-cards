@@ -4,7 +4,12 @@
     <table>
         <tr valign="top">
             <td><img src="{{ user.avatar(64) }}"></td>
-            <td><h1>{{ user.username }}</h1></td>
+            <td>
+                <h1>{{ user.username }}</h1>
+                {% if user.last_seen %}
+                <p> last seen: {{ user.last_seen }}</p>
+                {% endif %}
+            </td>
         </tr>
     </table>
     
