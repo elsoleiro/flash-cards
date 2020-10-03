@@ -3,7 +3,8 @@
 {% block content %}
     {% for card in cards %}
     <h4>
-        {{ card.front }}
+        <p>{{ card.front }}</p>
+        {{ card.back }}
     </h4>
     {% endfor %}
 {% endblock %}

@@ -54,7 +54,7 @@ def register():
 @login_required
 def cards(username):
     user = User.query.filter_by(username=username).first_or_404()
-    cards = Card.query.all()
+    cards = Card.query.filter_by(author=current_user)
 
     return render_template('cards.html', user=user, cards=cards)
 
