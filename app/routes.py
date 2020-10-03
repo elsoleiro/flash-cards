@@ -1,9 +1,10 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app
+from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Card
 from werkzeug.urls import url_parse
+from datetime import datetime
 
 
 @app.route('/')
@@ -52,9 +53,10 @@ def register():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-            {'author': user, 'body': 'Test 1'},
-            {'author': user, 'body': 'Test 2'}
-            ]
-    return render_template('user.html', user=user, posts=posts)
 
+    return render_template('user.html', user=user)
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
