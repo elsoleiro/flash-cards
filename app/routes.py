@@ -49,6 +49,15 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+
+@app.route('/cards/<username>') # '<>' denotes dynamic componenet
+@login_required
+def cards(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    cards = Card.query.all()
+
+    return render_template('cards.html', user=user, cards=cards)
+
 @app.route('/user/<username>') # '<>' denotes dynamic componenet
 @login_required
 def user(username):

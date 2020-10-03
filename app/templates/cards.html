@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for card in cards %}
+    <h4>
+        {{ card.front }}
+    </h4>
+    {% endfor %}
+{% endblock %}
