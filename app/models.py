@@ -53,5 +53,13 @@ class Card(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<card front: {} back: {}>'.format(self.front, self.back)
+        return '''
+        <card id: {}, 
+        type = {}, 
+        front: {}, 
+        back = {}, 
+        known = {}, 
+        time = {}, 
+        uid = {}>'''.format(self.id, self.type, self.front, self.back, 
+                self.known, self.timestamp, self.user_id)
 
