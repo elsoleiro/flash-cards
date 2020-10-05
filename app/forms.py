@@ -3,6 +3,7 @@ this module stores web form classes
 """
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.widgets import TextArea
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from app.models import User
 
@@ -31,8 +32,8 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('please use a different email address.')
 
 class EditCard(FlaskForm):
-    front= StringField('front', validators=[DataRequired()])
-    back = StringField('back', validators=[DataRequired()])
+    front = StringField('front', widget=TextArea(), validators=[DataRequired()])
+    back = StringField('back', widget=TextArea(), validators=[DataRequired()])
     submit = SubmitField('Submit')
     
 

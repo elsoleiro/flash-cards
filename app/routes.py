@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, EditCard
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Card
 from werkzeug.urls import url_parse
@@ -55,7 +55,6 @@ def register():
 def cards(username):
     user = User.query.filter_by(username=username).first_or_404()
     cards = Card.query.filter_by(author=current_user)
-
     return render_template('cards.html', user=user, cards=cards)
 
 @app.route('/user/<username>') # '<>' denotes dynamic componenet
@@ -69,7 +68,10 @@ def user(username):
 @login_required
 def edit(card_id):
     card = Card.query.filter_by(id=card_id).first()
-    return render_template('edit.html', card=card)
+    form = EditCard()
+    form.front.data = card.front
+    form.back.data = card.back
+    return render_template('edit.html', card=card, form=form)
 
 #make def edit_card to save the edit (i.e pass to db), flash message for success)
 
