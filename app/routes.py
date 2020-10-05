@@ -64,7 +64,8 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
 
     return render_template('user.html', user=user)
-@app.route('edit/<card_id>')
+
+@app.route('/edit/<card_id>')
 @login_required
 def edit(card_id):
     return render_template('index.html')

@@ -2,9 +2,15 @@
 
 {% block content %}
     {% for card in cards %}
-    <h4>
-        <p>{{ card.front }}</p>
-        {{ card.back }}
-    </h4>
+    <tr>
+        <td>
+            <a href="{{ url_for('edit', card_id=card.id) }}">{{ card.id }}</a>
+        </td>
+        <td>
+            <h4>
+                {{ card.front }}
+            </h4>
+        </td>
+    </tr>
     {% endfor %}
 {% endblock %}
