@@ -6,7 +6,7 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.front.label }} <br>
-            {{ form.front(cols="35", rows="20", data=card.front) }}
+            {{ form.front(cols="35", rows="20", value=card.front) }}
             {% for error in form.front.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}

@@ -63,3 +63,5 @@ class Card(db.Model):
         uid = {}>'''.format(self.id, self.type, self.front, self.back, 
                 self.known, self.timestamp, self.user_id)
 
+    def set_front(self, front):
+        self.front = front

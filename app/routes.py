@@ -64,11 +64,18 @@ def user(username):
 
     return render_template('user.html', user=user)
 
-@app.route('/edit/<card_id>')
+@app.route('/edit/<card_id>', methods=['GET', 'POST'])
 @login_required
 def edit(card_id):
-    card = Card.query.filter_by(id=card_id).first()
     form = EditCard()
+    card = Card.query.filter_by(id=card_id).first()
+    if form.validate_on_submit():
+        card.front = form.front.data
+        card.back = form.back.data
+        db.session.commit()
+        flash('worked')
+        print(form.front.data, card.front)
+ 
     form.front.data = card.front
     form.back.data = card.back
     return render_template('edit.html', card=card, form=form)
