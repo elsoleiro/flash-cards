@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Edit Card #{{ card.id }}</h2>
+<h2>Edit Card #{{ card.id }}</h2>
+<label for="front">Front of Card</label>
+<br>
+<input type="text" name="front" value="{{ card.front|e }}">
+<br>
+<textarea name="back" id="back" 
+    placeholder="back of card" rows="12">{{ card.back|e }}</textarea>
 {% endblock %}
