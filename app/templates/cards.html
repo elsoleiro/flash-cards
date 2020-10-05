@@ -6,6 +6,7 @@
     <tr>
         <td>
             <a href="{{ url_for('edit', card_id=card.id) }}">{{ card.id }}</a>
+            <a href="{{ url_for('delete', card_id=card.id) }}">-</a>
         </td>
         <td>
             <h4>

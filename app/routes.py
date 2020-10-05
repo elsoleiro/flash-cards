@@ -87,10 +87,16 @@ def add_card():
                 author=current_user)
         db.session.commit()
         flash('added card')
-        return redirect(url_for('index'))
+        return redirect(url_for('cards', username=current_user.username))
     return render_template('add.html', form=form)
 
-#make def edit_card to save the edit (i.e pass to db), flash message for success)
+@app.route('/delete/<card_id>')
+@login_required
+def delete(card_id):
+    card = Card.query.filter_by(id=card_id).first()
+    db.session.delete(card)
+    db.session.commit()
+    return redirect(url_for('cards', username=current_user.username))
 
 @app.before_request
 def before_request():
