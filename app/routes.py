@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditCard
+from app.forms import LoginForm, RegistrationForm, EditCard, AddCard
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Card
 from werkzeug.urls import url_parse
@@ -61,7 +61,6 @@ def cards(username):
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-
     return render_template('user.html', user=user)
 
 @app.route('/edit/<card_id>', methods=['GET', 'POST'])
@@ -73,12 +72,23 @@ def edit(card_id):
         card.front = form.front.data
         card.back = form.back.data
         db.session.commit()
-        flash('worked')
-        print(form.front.data, card.front)
+        flash('this card has been updated')
  
     form.front.data = card.front
     form.back.data = card.back
     return render_template('edit.html', card=card, form=form)
+
+@app.route('/add', methods=['GET', 'POST'])
+@login_required
+def add_card():
+    form = AddCard()
+    if form.validate_on_submit():
+        card = Card(type=1, front=form.front.data, back=form.back.data,
+                author=current_user)
+        db.session.commit()
+        flash('added card')
+        return redirect(url_for('index'))
+    return render_template('add.html', form=form)
 
 #make def edit_card to save the edit (i.e pass to db), flash message for success)
 

@@ -36,5 +36,11 @@ class EditCard(FlaskForm):
     back = StringField('back', widget=TextArea(), validators=[DataRequired()])
     submit = SubmitField('Submit')
     
+class AddCard(FlaskForm):
+    front = StringField('front', widget=TextArea(), validators=[DataRequired()])
+    back = StringField('back', widget=TextArea(), validators=[DataRequired()])
+    submit = SubmitField('Submit')
+    
+
 
 
