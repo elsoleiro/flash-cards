@@ -7,5 +7,32 @@
 <input type="text" name="front" value="{{ card.front|e }}">
 <br>
 <textarea name="back" id="back" 
-    placeholder="back of card" rows="12">{{ card.back|e }}</textarea>
+    placeholder="back of card" rows="12">{{ card.back|e }}
+</textarea>
+
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.front.label }} <br>
+            {{ form.username(size=32) }}
+            {% for error in form.front.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.back.label }}<br>
+            {{ form.back(size=32) }}
+            {% for error in form.back.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ 
+
+
+
+
 {% endblock %}

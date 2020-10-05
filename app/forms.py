@@ -30,4 +30,10 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('please use a different email address.')
 
+class EditCard(FlaskForm):
+    front= StringField('front', validators=[DataRequired()])
+    back = StringField('back', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+    
+
 
