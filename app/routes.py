@@ -68,7 +68,10 @@ def user(username):
 @app.route('/edit/<card_id>')
 @login_required
 def edit(card_id):
-    return render_template('index.html')
+    card = Card.query.filter_by(id=card_id)
+    return render_template('edit.html', card=card)
+
+#make def edit_card to save the edit (i.e pass to db), flash message for success)
 
 @app.before_request
 def before_request():
