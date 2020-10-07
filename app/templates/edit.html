@@ -2,8 +2,9 @@
 
 {% block content %}
     <form action="" method="post" novalidate>
-        <div class="row no-gutters">
-            <div class="col-md-6 px-0">
+        <div class="d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-6">
         {{ form.hidden_tag() }}
             {{ form.front.label }} <br>
             {{ form.front(cols="35", rows="20", value=card.front) }}
@@ -11,12 +12,13 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             </div>
-        <div class="col-md-6 px-0">
+            <div class="col-md-6">
             {{ form.back.label }}<br>
             {{ form.back(cols="35", rows="20", value=card.back) }}
             {% for error in form.back.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
+        </div>
         </div>
         </div>
         <p>{{ form.submit() }}</p>
