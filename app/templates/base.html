@@ -4,7 +4,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
       {% if title %}
@@ -14,11 +13,9 @@
       {% endif %}
       
     </head>
-    <body class="text-center">
-        <div class="cover-contrainer d-flex h-100 p-3 mx-auto flex-column">
+    <body>
             <header class="masthead mb-auto">
-                <div class="inner">
-                    <nav class="nav nav-masthead justify-content-center">
+                    <nav class="nav nav-masthead justify-content-start">
                         <a class="nav-link active" href="{{ url_for('index') }}">home</a>
                         {% if current_user.is_anonymous %}
                         <a class="nav-link" href="{{ url_for('login') }}">login</a>
@@ -28,10 +25,7 @@
                         <a class="nav-link" href="{{ url_for('logout') }}">logout</a>
                         {% endif %}
                     </nav>
-                </div>
             </header>
-        <hr>
-        <main role="main" class="inner cover">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -41,9 +35,7 @@
             {% endfor %}
         {% endif %}
         {% endwith %}
-        </div>
         {% block content %}{% endblock content%}
-        </main>
           <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
