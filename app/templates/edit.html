@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Edit Card #{{ card.id }}</h2>
     <form action="" method="post" novalidate>
+        <div class="row no-gutters">
+            <div class="col-md-6 px-0">
         {{ form.hidden_tag() }}
-        <p>
             {{ form.front.label }} <br>
             {{ form.front(cols="35", rows="20", value=card.front) }}
             {% for error in form.front.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-
-        <p>
+            </div>
+        <div class="col-md-6 px-0">
             {{ form.back.label }}<br>
             {{ form.back(cols="35", rows="20", value=card.back) }}
             {% for error in form.back.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
+        </div>
+        </div>
         <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}

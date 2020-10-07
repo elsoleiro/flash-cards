@@ -4,15 +4,12 @@
 <br>
     {% for card in cards %}
     <tr>
+        <br>
         <td>
-            <a href="{{ url_for('edit', card_id=card.id) }}">{{ card.front }}</a>
-            <a href="{{ url_for('delete', card_id=card.id) }}">-</a>
+            <a class="btn btn-lg btn-secondary" href="{{ url_for('delete', card_id=card.id) }}">-</a>
+            <a class="btn btn-lg btn-secondary" href="{{ url_for('edit', card_id=card.id) }}">{{ card.front }}</a>
         </td>
-        <td>
-            <h4>
-                {{ card.front }}
-            </h4>
-        </td>
+        <br>
     </tr>
     {% endfor %}
 {% endblock %}
