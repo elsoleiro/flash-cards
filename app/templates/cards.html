@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="{{ url_for('add_card') }}">+</a>
+<a class="btn btn-lg btn-secondary" href="{{ url_for('add_card') }}">+</a>
 <br>
     {% for card in cards %}
     <tr>
         <td>
-            <a href="{{ url_for('edit', card_id=card.id) }}">{{ card.id }}</a>
+            <a href="{{ url_for('edit', card_id=card.id) }}">{{ card.front }}</a>
             <a href="{{ url_for('delete', card_id=card.id) }}">-</a>
         </td>
         <td>
