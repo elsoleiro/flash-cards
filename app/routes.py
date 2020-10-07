@@ -96,6 +96,7 @@ def delete(card_id):
     card = Card.query.filter_by(id=card_id).first()
     db.session.delete(card)
     db.session.commit()
+    flash('deleted card')
     return redirect(url_for('cards', username=current_user.username))
 
 @app.before_request
