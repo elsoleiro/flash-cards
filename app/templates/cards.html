@@ -3,14 +3,21 @@
 <a class="btn btn-lg btn-secondary" href="{{ url_for('add_card') }}">+</a>
 <br>
     {% for card in cards %}
-    <tr>
+        <div class="row">
+            <div class="col-md-4 px-1">
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-lg btn-secondary" href="{{ url_for('delete', card_id=card.id) }}">-</a>
+                </div>
+            </div>
+            <div class="col-md-4 px-1">
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-secondary" href="{{ url_for('edit', card_id=card.id) }}">{{ card.front }}</a>
+                </div>
+            </div>
+            <div class="col-md-4 px-1">
+            </div>
+        </div>
         <br>
-        <td>
-            <a class="btn btn-lg btn-secondary" href="{{ url_for('delete', card_id=card.id) }}">-</a>
-            <a class="btn btn-lg btn-secondary" href="{{ url_for('edit', card_id=card.id) }}">{{ card.front }}</a>
-        </td>
-        <br>
-    </tr>
     {% endfor %}
 {% endblock %}
 

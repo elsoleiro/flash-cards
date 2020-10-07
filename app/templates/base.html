@@ -18,9 +18,6 @@
         <div class="cover-contrainer d-flex h-100 p-3 mx-auto flex-column">
             <header class="masthead mb-auto">
                 <div class="inner">
-                    <h3=class"masthead-brand"> 
-                        flash cards
-                    </h3>
                     <nav class="nav nav-masthead justify-content-center">
                         <a class="nav-link active" href="{{ url_for('index') }}">home</a>
                         {% if current_user.is_anonymous %}
@@ -37,11 +34,11 @@
         <main role="main" class="inner cover">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
             {% for message in messages %}
-            <li>{{ message }}</li>
+            <div class="alert alert-dark" role="alert">
+            {{ message }}
+            </div>
             {% endfor %}
-        </ul>
         {% endif %}
         {% endwith %}
         {% block content %}{% endblock content%}
