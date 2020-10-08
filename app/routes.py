@@ -98,6 +98,10 @@ def delete(card_id):
     db.session.commit()
     flash('card deleted')
     return redirect(url_for('cards', username=current_user.username))
+@app.route('/learn')
+@login_required
+def learn():
+    return render_template('learn.html')
 
 @app.before_request
 def before_request():
