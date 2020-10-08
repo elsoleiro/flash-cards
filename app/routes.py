@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditCard, AddCard
+from sqlalchemy import func
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Card
 from werkzeug.urls import url_parse
@@ -98,10 +99,12 @@ def delete(card_id):
     db.session.commit()
     flash('card deleted')
     return redirect(url_for('cards', username=current_user.username))
+
 @app.route('/learn')
 @login_required
 def learn():
-    return render_template('learn.html')
+    card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
+    return render_template('learn.html', card=card)
 
 @app.before_request
 def before_request():
