@@ -1,23 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="d-flex justify-content-center"> 
-    <div class="row text-center h-100"> 
-        <div class="col-md-3 text-center my-auto">
-            <div class="card card-block d-flex" style="height: 45rem; width: 45rem">
-                <div class="card-body align-items-center d-flex justify-content-center">
-                    <h2>{{ card.front }}</h2>
-                </div>
-            </div>
+<div class="d-flex justify-content-center">
+    <div class="row memorizePanel">
+        <div class="cardFront">
+            <h3 class="text-center">{{ card.front }}</h3>
+        </div>
+        <div class="cardBack">
+            {{ card.back }}
         </div>
     </div>
 </div>
-<br>
-<div class="row">
-    <div class="col-md-12 text-center">
-        <a href="javascript:" class="btn btn-dark btn-lg flipCard">
-            <i class="fa fa-exchange"></i>
-            flip card
+<div class="d-flex justify-content-center">
+    <div class="row">
+        <a href="javascript:" class="btn btn-primary btn-lg flipCard">
+            Flip Card
         </a>
     </div>
 </div>
+
 {% endblock %}
