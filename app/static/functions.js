@@ -1,6 +1,5 @@
 $(document).ready(function(){
-    $('.cardBack').hide();
-    if ($('.memorizePanel').length != 0) {
+    if ($('.learningCard').length != 0) {
 
         $('.flipCard').click(function(){
             if ($('.cardFront').is(":visible") == true) {
