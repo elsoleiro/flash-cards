@@ -20,9 +20,22 @@
         <a href="javascript:" class="btn btn-dark btn-lg flipCard mx-1">
             flip card
         </a>
-        <a href="javascript:" class="btn btn-dark btn-lg flipCard">
+        <a href="{{ url_for('learn', username=current_user.username) }}" class="btn btn-dark btn-lg flipCard">
             next card
         </a>
+        newcardfront
+        <br>
+        {{ newCard.front }}
+        {{ newCard.back }}
+        <br>
+        user id
+        {{ user.id }}
+        <br>
+        card.user_id (current card)
+        {{ card.user_id }}
+        <br>
+        newcard.user_id
+        {{ newCard.user_id }}
     </div>
 </div>
 

@@ -100,11 +100,17 @@ def delete(card_id):
     flash('card deleted')
     return redirect(url_for('cards', username=current_user.username))
 
+def new_card(oldcard, author):
+    newCard = Card.query.filter((Card.user_id == author.id) & (Card.id != oldcard.id)).first()
+    return newCard
+
+
 @app.route('/learn')
 @login_required
 def learn():
     card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
-    return render_template('learn.html', card=card)
+    newCard = new_card(card, current_user)
+    return render_template('learn.html', card=card, newCard=newCard, user=current_user)
 
 @app.before_request
 def before_request():
