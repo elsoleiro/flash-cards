@@ -106,14 +106,17 @@ def new_card(oldcard, author):
 
 
 @app.route('/learn')
+@app.route('/learn/<card>')
 @login_required
-def learn():
+def learn(card=None):
     card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
-    newCard = new_card(card, current_user)
-    return render_template('learn.html', card=card, newCard=newCard, user=current_user)
+    k = Card.generateCardList(current_user.id)
+    print(k)
+    return render_template('learn.html', card=card, user=current_user)
 
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+

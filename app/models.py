@@ -9,6 +9,7 @@ from app import db, login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from hashlib import md5
+import random
 
 """
 the extension (flask-login) expects a configuration as a user loader function
@@ -52,16 +53,17 @@ class Card(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __repr__(self):
-        return '''
-        <card id: {}, 
-        type = {}, 
-        front: {}, 
-        back = {}, 
-        known = {}, 
-        time = {}, 
-        uid = {}>'''.format(self.id, self.type, self.front, self.back, 
-                self.known, self.timestamp, self.user_id)
-
-    def set_front(self, front):
-        self.front = front
+    def generateCardList(author_id):
+        ccs = Card.query.filter(Card.user_id == author_id).all()
+        finish = []
+        while(len(finish) < len(ccs)):
+            k = random.randint(0,(len(ccs)-1))
+            check = False
+            for i in finish:
+                if i == ccs[k]:
+                    check = True
+                    break
+            if check:
+                continue
+            finish.append(ccs[k])
+        return finish
