@@ -2,18 +2,26 @@
 {% block content %}
 <div class="d-flex justify-content-center">
     <div class="row learningCard">
-        <div class="cardFront">
-            <h3 class="text-center">{{ card.front }}</h3>
-        </div>
-        <div class="cardBack">
-            {{ card.back }}
+        <div class="card" style="width: 25rem; height: 25rem;">
+            <div class="card-body align-items-center d-flex justify-content-center">
+                <div class="cardFront">
+                    <h3 class="text-center">{{ card.front }}</h3>
+                </div>
+                <div class="cardBack">
+                    <h3 class="text-center">{{ card.back }}</h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<br>
 <div class="d-flex justify-content-center">
     <div class="row">
+        <a href="javascript:" class="btn btn-dark btn-lg flipCard mx-1">
+            flip card
+        </a>
         <a href="javascript:" class="btn btn-dark btn-lg flipCard">
-            Flip Card
+            next card
         </a>
     </div>
 </div>
