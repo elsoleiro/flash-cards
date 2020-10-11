@@ -108,8 +108,14 @@ def delete(card_id):
 @login_required
 def learn():
     card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
-    data = { 'cardfront' : card.front, 'cardback' : card.back }
-    return render_template('learn.html', card=card, data=data, user=current_user)
+    return render_template('learn.html', card=card, user=current_user)
+
+@app.route('/learn2', methods=['GET'])
+@login_required
+def learn2():
+    card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
+    return render_template('learn2.html', card=card, user=current_user)
+
 
 @app.before_request
 def before_request():
