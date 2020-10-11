@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form id="var">
-  <input name="name" />
-  <input type=submit />
+<form id='my-form-id'>
+  <input type='text' name='name' id='my-name-input-id' />
+  <button>Submit!</button>
 </form>
+<h1 class="output"></h1>
 
-    <input type="submit" value="click" onClick="counter()">
+    <input type="submit" value="click" onClick="counter()"/>
     Clicks: <a id="clicks">0</a>
 {% endblock %}
