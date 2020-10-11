@@ -53,17 +53,17 @@ class Card(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def generateCardList(author_id):
-        ccs = Card.query.filter(Card.user_id == author_id).all()
+    def card_list(author_id):
+        cards = Card.query.filter(Card.user_id == author_id).all()
         finish = []
-        while(len(finish) < len(ccs)):
-            k = random.randint(0,(len(ccs)-1))
+        while(len(finish) < len(cards)):
+            k = random.randint(0,(len(cards)-1))
             check = False
             for i in finish:
-                if i == ccs[k]:
+                if i == cards[k]:
                     check = True
                     break
             if check:
                 continue
-            finish.append(ccs[k])
+            finish.append(cards[k])
         return finish
