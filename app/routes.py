@@ -14,6 +14,10 @@ from datetime import datetime
 def index():
     return render_template('index.html', title="home")
 
+@app.route('/test')
+def test():
+    return render_template('test.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -100,14 +104,9 @@ def delete(card_id):
     flash('card deleted')
     return redirect(url_for('cards', username=current_user.username))
 
-def new_card(oldcard, author):
-    newCard = Card.query.filter((Card.user_id == author.id) & (Card.id != oldcard.id)).first()
-    return newCard
-
-
 @app.route('/learn', methods=['GET'])
 @login_required
-def learn(card=None):
+def learn():
     card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
     k = Card.card_list(current_user.id)
     print(k)
