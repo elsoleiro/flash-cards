@@ -6,6 +6,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Card
 from werkzeug.urls import url_parse
 from datetime import datetime
+import json
 
 
 @app.route('/')
@@ -115,8 +116,12 @@ def learn():
 def learn2():
     card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
     cardList = Card.card_list(current_user.id)
-    return render_template('learn2.html', card=card, cardList=cardList,  user=current_user)
-
+    tempcard = card.__dict__  # the pop() method is on dictionaries
+    tempcard.pop("_sa_instance_state")  # watch the leading underscore
+    card = json.dumps(tempcard)
+    print(card)
+    return render_template('learn2.html', card=card, user=current_user)
+ 
 
 @app.before_request
 def before_request():
