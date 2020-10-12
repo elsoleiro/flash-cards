@@ -21,18 +21,9 @@
     <div class="row">
         <a href="javascript:" class="btn btn-dark btn-lg flipCard mx-1">
             flip card
-        </a>
-        <a id="flipmyCard">
-            flip js
-        </a>
         <a href="{{ url_for('learn', card=newCard) }}" class="btn btn-dark btn-lg">
             next card
         </a>
     </div>
 </div>
-        <script type="text/javascript">
-            var cardFront = {{ card.front|tojson }}
-            var cardBack = {{ card.back|tojson }}
-        </script>
-            
 {% endblock %}
