@@ -1,4 +1,5 @@
 console.log(cardFront, cardBack)
+console.log(singleCard)
 document.getElementById("card").innerHTML = cardFront;
 
 
@@ -10,3 +11,4 @@ function flipCard() {
     x.innerHTML = cardFront;
   }
 } 
+

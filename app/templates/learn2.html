@@ -2,10 +2,10 @@
 {% block content %}
 <div class="d-flex justify-content-center">
     <div class="row learningCard">
-        <div class="card" style="width: 25rem; height: 25rem;">
+        <div class="card" style="width: 45rem; height: 45rem;">
             <div class="card-body align-items-center d-flex justify-content-center">
-                <div id="card">
-                </div>
+                <h3><div id="card">
+                    </div></h3>
             </div>
         </div>
     </div>
@@ -13,7 +13,7 @@
 <br>
 <div class="d-flex justify-content-center">
     <div class="row">
-        <button onClick="flipCard()">
+        <button type="button" class="btn btn-dark" onClick="flipCard()">
             flip card
         </button>
     </div>
@@ -21,6 +21,7 @@
         <script type="text/javascript">
             var cardFront = {{ card.front|tojson }}
             var cardBack = {{ card.back|tojson }}
+            var singleCard = {{ card|tojson }}
         </script>
             
         <script src="{{ url_for('static', filename='app.js') }}"></script>

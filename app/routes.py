@@ -114,7 +114,8 @@ def learn():
 @login_required
 def learn2():
     card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
-    return render_template('learn2.html', card=card, user=current_user)
+    cardList = Card.card_list(current_user.id)
+    return render_template('learn2.html', card=card, cardList=cardList,  user=current_user)
 
 
 @app.before_request
