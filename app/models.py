@@ -10,6 +10,7 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from hashlib import md5
 import random
+import json
 
 """
 the extension (flask-login) expects a configuration as a user loader function
@@ -67,3 +68,17 @@ class Card(db.Model):
                 continue
             finish.append(cards[k])
         return finish
+
+# extend json encoder class
+class JSONEncoder(json.JSONEncoder):
+    
+    # overload default method
+    def default(self, obj):
+        
+        # match all the types you want to handle in conversion
+        if isinstance(obj, datetime):
+            return obj.strftime("%m/%d/%Y, %H:%M:%S")
+        return json.JSONEncoder.default(self, obj)
+
+    def json_encode(data):
+        return JSONEncoder().encode(data)

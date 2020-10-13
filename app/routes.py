@@ -3,10 +3,9 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditCard, AddCard
 from sqlalchemy import func
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Card
+from app.models import User, Card, JSONEncoder
 from werkzeug.urls import url_parse
 from datetime import datetime
-import json
 
 
 @app.route('/')
@@ -115,11 +114,7 @@ def learn():
 @login_required
 def learn2():
     card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
-    cardList = Card.card_list(current_user.id)
-    tempcard = card.__dict__  # the pop() method is on dictionaries
-    tempcard.pop("_sa_instance_state")  # watch the leading underscore
-    card = json.dumps(tempcard)
-    print(card)
+    card = JSONEncoder().encode(card)
     return render_template('learn2.html', card=card, user=current_user)
  
 
