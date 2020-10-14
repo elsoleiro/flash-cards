@@ -114,6 +114,9 @@ def learn():
 @login_required
 def learn2():
     card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
+    tempcard = card.__dict__
+    tempcard.pop("_sa_instance_state")  # watch the leading underscore
+    card = JSONEncoder().encode(tempcard)
     card = JSONEncoder().encode(card)
     return render_template('learn2.html', card=card, user=current_user)
  

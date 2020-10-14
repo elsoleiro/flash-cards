@@ -1,5 +1,4 @@
-console.log(cardFront, cardBack)
-console.log(singleCard)
+console.log(x)
 document.getElementById("card").innerHTML = cardFront;
 
 

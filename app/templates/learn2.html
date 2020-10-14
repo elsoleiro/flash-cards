@@ -4,7 +4,6 @@
     <div class="row learningCard">
         <div class="card" style="width: 45rem; height: 45rem;">
             <div class="card-body align-items-center d-flex justify-content-center">
-                {{ card.timestamp }}
                 <h3><div id="card">
                     </div></h3>
             </div>
@@ -20,8 +19,7 @@
     </div>
 </div>
         <script type="text/javascript">
-            var cardFront = {{ card.front|tojson }}
-            var cardBack = {{ card.back|tojson }}
+            var x = {{ card|tojson }}
         </script>
             
         <script src="{{ url_for('static', filename='app.js') }}"></script>
