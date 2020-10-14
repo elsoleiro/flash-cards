@@ -1,14 +1,7 @@
 console.log(x)
-console.log(x["front"])
-document.getElementById("card").innerHTML = cardFront;
+
+const obj = JSON.parse(JSON.parse(x));
+console.log(obj.front)
 
 
-function flipCard() {
-  var x = document.getElementById("card");
-  if (x.innerHTML === cardFront) {
-    x.innerHTML = cardBack;
-  } else {
-    x.innerHTML = cardFront;
-  }
-} 
 
