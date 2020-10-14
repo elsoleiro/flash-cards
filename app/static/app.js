@@ -1,4 +1,5 @@
 console.log(x)
+console.log(x["front"])
 document.getElementById("card").innerHTML = cardFront;
 
 
