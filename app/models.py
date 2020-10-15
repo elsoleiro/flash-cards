@@ -69,6 +69,17 @@ class Card(db.Model):
             finish.append(cards[k])
         return finish
 
+    def jsonify_cards(cards):
+        res = []
+        for i in cards:
+            tempcard = i.__dict__
+            tempcard.pop("_sa_instance_state")
+            card = JSONEncoder().encode(tempcard)
+            card = JSONEncoder().encode(card)
+            res.append(card)
+        return res
+
+
 # extend json encoder class
 class JSONEncoder(json.JSONEncoder):
     
