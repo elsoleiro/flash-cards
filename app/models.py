@@ -75,7 +75,6 @@ class Card(db.Model):
             tempcard = i.__dict__
             tempcard.pop("_sa_instance_state")
             card = JSONEncoder().encode(tempcard)
-            card = JSONEncoder().encode(card)
             res.append(card)
         return res
 
@@ -91,5 +90,3 @@ class JSONEncoder(json.JSONEncoder):
             return obj.strftime("%m/%d/%Y, %H:%M:%S")
         return json.JSONEncoder.default(self, obj)
 
-    def json_encode(data):
-        return JSONEncoder().encode(data)

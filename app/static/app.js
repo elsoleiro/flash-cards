@@ -1,7 +1,9 @@
-console.log(x)
+console.log(x);
 
-const obj = JSON.parse(x)
-console.log(obj)
+console.log
 
+
+// technically speaking, we can use js to call the backend
+// we could also, since we have the cards, push the cards
 
 
