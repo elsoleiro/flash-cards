@@ -42,42 +42,30 @@ function nextCard() {
     document.getElementById("card").innerHTML = objects[k].front;
 };
 
-function old() {
-    xhr = new XMLHttpRequest(); 
-    xhr.open('POST', '_mark_known'); 
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() { 
-        if (xhr.status === 200) {
-            alert('Something went wrong' + xhr.responseText);
-        }
-        else if (xhr.status !== 200) {
-            alert('Request failed.  Returned status of ' + xhr.status);
-        }   
-    };
-    var k = j % objects.length
-    xhr.send(encodeURI(objects[k].id));
+var k = j % objects.length;
+var obj = objects[k].id;
+
+const url = "/_mark_known"
+const data = obj
+
+async function knownCard() {
+    postData(url, data);
 };
 
+async function postData (url, data) {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
 
+  if (response.status < 200 || response.status >= 400) {
+    throw new Error(`Recived HTTP status ${response.status}`);
+  }
 
-function knownCard() {
-    var req = new XMLHttpRequest();
-    var k = j % objects.length
-    var obj = objects[k].id;
-    req.open('POST', '/_mark_known', true);
-    req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-    req.send(obj);
-};
-
-
-
-
-
-
-
-
-
-
-
+  return response.json();
+}
 
 document.getElementById("card").innerHTML = objects[j].front;

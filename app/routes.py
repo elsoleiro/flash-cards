@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify, make_response
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditCard, AddCard
 from sqlalchemy import func
@@ -113,9 +113,10 @@ def learn():
 
 @app.route('/_mark_known', methods=['POST'])
 def mark_known():
-    card = request.form["obj"]
-    print(card)
-
+    res = request.get_json()
+    
+    response = make_response(jsonify({"message": "OK"}), 200)
+    return response
 
  
 

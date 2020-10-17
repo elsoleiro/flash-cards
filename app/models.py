@@ -11,7 +11,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from hashlib import md5
 import random
 import json
-
 """
 the extension (flask-login) expects a configuration as a user loader function
 that can be called to load a user given the id
