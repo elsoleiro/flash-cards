@@ -104,23 +104,19 @@ def delete(card_id):
     flash('card deleted')
     return redirect(url_for('cards', username=current_user.username))
 
-@app.route('/learn', methods=['GET'])
+@app.route('/learn')
 @login_required
 def learn():
-    card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
-    return render_template('learn.html', card=card, user=current_user)
-
-@app.route('/learn2', methods=['GET'])
-@login_required
-def learn2():
-    #card = Card.query.filter_by(author=current_user).order_by(func.random()).first()
     cards = Card.card_list(current_user.id)
     cards = Card.jsonify_cards(cards)
-    #tempcard = card.__dict__
-    #tempcard.pop("_sa_instance_state")  # watch the leading underscore
-    #card = JSONEncoder().encode(tempcard)
-    #card = JSONEncoder().encode(card)
     return render_template('learn2.html', cards=cards, user=current_user)
+
+@app.route('/_mark_known', methods=['POST'])
+def mark_known():
+    #card = Card.query.filter_by(id=card_id).update(known=True)
+    #db.session.commit()
+    flash('card updated')
+
  
 
 @app.before_request

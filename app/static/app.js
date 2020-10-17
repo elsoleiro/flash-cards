@@ -27,7 +27,7 @@ console.log(objects)
 
 var j = 0;
 function flipCard() {
-  var x = document.getElementById("card")
+  var x = document.getElementById("card");
   var k = j % objects.length
   if (x.innerHTML === objects[k].front) {
     x.innerHTML = objects[k].back;
@@ -37,9 +37,26 @@ function flipCard() {
 };
 
 function nextCard() {
-    j += 1
-    var k = j % objects.length
+    j += 1;
+    var k = j % objects.length;
     document.getElementById("card").innerHTML = objects[k].front;
 };
+
+function knownCard() {
+    xhr = new XMLHttpRequest(); 
+    xhr.open('POST', '/_mark_known'); 
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() { 
+        if (xhr.status === 200) {
+            alert('Something went wrong' + xhr.responseText);
+        }
+        else if (xhr.status !== 200) {
+            alert('Request failed.  Returned status of ' + xhr.status);
+        }   
+    };
+    var k = j % objects.length
+    xhr.send(encodeURI(objects[k].id));
+};
+
 
 document.getElementById("card").innerHTML = objects[j].front;
