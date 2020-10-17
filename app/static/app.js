@@ -26,13 +26,13 @@ console.log(objects)
 // called fetch
 
 var j = 0;
-document.getElementById("card").innerHTML = objects[j].front;
 function flipCard() {
-  var x = document.getElementById("card");
-  if (x.innerHTML === objects[j].front) {
-    x.innerHTML = objects[j].back;
+  var x = document.getElementById("card")
+  var k = j % objects.length
+  if (x.innerHTML === objects[k].front) {
+    x.innerHTML = objects[k].back;
   } else {
-    x.innerHTML = objects[j].front;
+    x.innerHTML = objects[k].front;
   }
 };
 
@@ -41,3 +41,5 @@ function nextCard() {
     var k = j % objects.length
     document.getElementById("card").innerHTML = objects[k].front;
 };
+
+document.getElementById("card").innerHTML = objects[j].front;
