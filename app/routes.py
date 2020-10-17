@@ -113,7 +113,7 @@ def learn():
 
 @app.route('/_mark_known', methods=['POST'])
 def mark_known():
-    card = request.form.get("objects[k].id")
+    card = request.form["obj"]
     print(card)
 
 

@@ -42,7 +42,7 @@ function nextCard() {
     document.getElementById("card").innerHTML = objects[k].front;
 };
 
-function knownCard() {
+function old() {
     xhr = new XMLHttpRequest(); 
     xhr.open('POST', '_mark_known'); 
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -57,4 +57,27 @@ function knownCard() {
     var k = j % objects.length
     xhr.send(encodeURI(objects[k].id));
 };
+
+
+
+function knownCard() {
+    var req = new XMLHttpRequest();
+    var k = j % objects.length
+    var obj = objects[k].id;
+    req.open('POST', '/_mark_known', true);
+    req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+    req.send(obj);
+};
+
+
+
+
+
+
+
+
+
+
+
+
 document.getElementById("card").innerHTML = objects[j].front;
