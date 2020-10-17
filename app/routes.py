@@ -113,8 +113,9 @@ def learn():
 
 @app.route('/_mark_known', methods=['POST'])
 def mark_known():
-    res = request.get_json()
-    
+    card_id = request.get_json()
+    card = Card.query.filter_by(id=card_id).update(dict(known=True))
+    db.session.commit()
     response = make_response(jsonify({"message": "OK"}), 200)
     return response
 
