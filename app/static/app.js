@@ -44,7 +44,7 @@ function nextCard() {
 
 function knownCard() {
     xhr = new XMLHttpRequest(); 
-    xhr.open('POST', '/_mark_known'); 
+    xhr.open('POST', '_mark_known'); 
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() { 
         if (xhr.status === 200) {
@@ -57,6 +57,4 @@ function knownCard() {
     var k = j % objects.length
     xhr.send(encodeURI(objects[k].id));
 };
-
-
 document.getElementById("card").innerHTML = objects[j].front;

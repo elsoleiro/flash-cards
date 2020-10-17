@@ -113,9 +113,9 @@ def learn():
 
 @app.route('/_mark_known', methods=['POST'])
 def mark_known():
-    #card = Card.query.filter_by(id=card_id).update(known=True)
-    #db.session.commit()
-    flash('card updated')
+    card = request.form.get("objects[k].id")
+    print(card)
+
 
  
 
