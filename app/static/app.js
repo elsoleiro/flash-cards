@@ -36,4 +36,8 @@ function flipCard() {
   }
 };
 
-
+function nextCard() {
+    j += 1
+    var k = j % objects.length
+    document.getElementById("card").innerHTML = objects[k].front;
+};
