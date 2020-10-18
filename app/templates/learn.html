@@ -2,16 +2,10 @@
 {% block content %}
 <div class="d-flex justify-content-center">
     <div class="row learningCard">
-        <div class="card" style="width: 25rem; height: 25rem;">
+        <div class="card" style="width: 45rem; height: 45rem;">
             <div class="card-body align-items-center d-flex justify-content-center">
-                <div id="card">
-                <div class="cardFront">
-                    <h3 class="text-center">{{ card.front }}</h3>
-                </div>
-                <div class="cardBack">
-                    <h3 class="text-center">{{ card.back }}</h3>
-                </div>
-                </div>
+                <h3><div id="card">
+                    </div></h3>
             </div>
         </div>
     </div>
@@ -19,11 +13,21 @@
 <br>
 <div class="d-flex justify-content-center">
     <div class="row">
-        <a href="javascript:" class="btn btn-dark btn-lg flipCard mx-1">
+        <button type="button" class="btn btn-dark mx-1" onClick="flipCard()">
             flip card
-        <a href="{{ url_for('learn', card=newCard) }}" class="btn btn-dark btn-lg">
+        </button>
+        <button type="button" class="btn btn-dark mx-1" onClick="nextCard()">
             next card
-        </a>
+        </button>
+        <button type="button" class="btn btn-dark mx-1" onClick="knownCard()">
+            known card
+        </button>
     </div>
 </div>
-{% endblock %}
+        <script type="text/javascript">
+            var x = {{ cards|tojson }}
+        </script>
+            
+        <script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %} 
+

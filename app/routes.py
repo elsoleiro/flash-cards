@@ -109,7 +109,14 @@ def delete(card_id):
 def learn():
     cards = Card.card_list(current_user.id)
     cards = Card.jsonify_cards(cards)
-    return render_template('learn2.html', cards=cards, user=current_user)
+    return render_template('learn.html', cards=cards, user=current_user)
+
+@app.route('/learntest')
+@login_required
+def learntest():
+    cards = Card.card_list(current_user.id)
+    cards = Card.jsonify_cards(cards)
+    return render_template('learntest.html', cards=cards, user=current_user)
 
 @app.route('/_mark_known', methods=['POST'])
 def mark_known():

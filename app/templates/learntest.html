@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flip-card-3D-wrapper">
+<div id="flip-card">
+	<div class="flip-card-front">
+        <button id="flip-card-btn-turn-to-back">flip</button></div>
+	<div class="flip-card-back"><button id="flip-card-btn-turn-to-front">flip</button></div>
+</div>
+</div>
+        <script type="text/javascript">
+            var x = {{ cards|tojson }}
+        </script>
+            
+        <script src="{{ url_for('static', filename='apptest.js') }}"></script>
+{% endblock %} 
