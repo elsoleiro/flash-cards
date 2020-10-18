@@ -4,6 +4,7 @@ function loopObjects(item, index) {
     objects.push(JSON.parse(item))
 };
 
+document.getElementById('cardFront').innerHTML = objects[0].front
 
 document.addEventListener('DOMContentLoaded', function(event) {
     document.getElementById('flip-card-btn-turn-to-back').style.visibility = 'visible';

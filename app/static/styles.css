@@ -89,7 +89,7 @@ html, body
     -ms-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
-#flip-card .flip-card-front p, #flip-card .flip-card-back p {
+#flip-card .flip-card-front p, #flip-card .flip-card-back p, #cardFront {
   color: grey;
   display: block;
   position: absolute;
