@@ -117,7 +117,9 @@ def mark_known():
     card = Card.query.filter_by(id=card_id).update(dict(known=True))
     db.session.commit()
     response = make_response(jsonify({"message": "OK"}), 200)
+    flash('marked as known')
     return response
+
 
  
 

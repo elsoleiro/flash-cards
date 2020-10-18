@@ -54,7 +54,7 @@ class Card(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def card_list(author_id):
-        cards = Card.query.filter(Card.user_id == author_id).all()
+        cards = Card.query.filter(Card.user_id == author_id, Card.known==False).all()
         finish = []
         while(len(finish) < len(cards)):
             k = random.randint(0,(len(cards)-1))

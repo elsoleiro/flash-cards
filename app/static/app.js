@@ -50,6 +50,9 @@ const data = obj
 
 async function knownCard() {
     postData(url, data);
+    j += 1;
+    var k = j % objects.length;
+    document.getElementById("card").innerHTML = objects[k].front;
 };
 
 async function postData (url, data) {
