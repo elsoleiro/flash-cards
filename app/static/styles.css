@@ -48,7 +48,7 @@ html, body
   -ms-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
-#flip-card-btn-turn-to-back, #flip-card-btn-turn-to-front {
+#flip-card-btn-turn-to-back, #flip-card-btn-turn-to-front #next-card-btn{
   position: absolute;
   top: 8px;
   right: 8px;
@@ -89,8 +89,8 @@ html, body
     -ms-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
-#flip-card .flip-card-front p, #flip-card .flip-card-back p, #cardFront {
-  color: grey;
+#flip-card .flip-card-front p, #flip-card .flip-card-back p, #cardFront, #cardBack{
+  color: black;
   display: block;
   position: absolute;
   top: 40%;
