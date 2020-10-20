@@ -14,8 +14,13 @@ card.addEventListener('click', function() {
 const nextButton = document.querySelector('.nextButton');
 
 nextButton.addEventListener('click', function() {
-    card.classList.click('is-next');
+    card.classList.add('is-next');
 });
+
+nextButton.addEventListener('click', function() {
+    card.classList.remove('is-next');
+});
+
 
 var j = 0;
 var cardFront = document.querySelector('.cardFront').innerHTML = objects[j].front
