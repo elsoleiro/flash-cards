@@ -7,20 +7,16 @@ console.log(objects);
 
 const card = document.querySelector('.card__inner');
 
-card.addEventListener('click', function() {
+card.addEventListener('click', () => {
     card.classList.toggle('is-flipped');
 });
 
 const nextButton = document.querySelector('.nextButton');
 
-nextButton.addEventListener('click', function() {
-    card.classList.add('is-next');
+nextButton.addEventListener('click', () => {
+    card.classList.toggle('is-next');
+    
 });
-
-nextButton.addEventListener('click', function() {
-    card.classList.remove('is-next');
-});
-
 
 var j = 0;
 var cardFront = document.querySelector('.cardFront').innerHTML = objects[j].front

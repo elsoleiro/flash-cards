@@ -63,7 +63,7 @@
 }
 
 /* The element to apply the animation to */
-.card__inner.is-next {
+.is-next {
   position: relative;
   animation-name: example;
   animation-duration: 1s;
