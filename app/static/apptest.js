@@ -14,7 +14,7 @@ card.addEventListener('click', function() {
 const nextButton = document.querySelector('.nextButton');
 
 nextButton.addEventListener('click', function() {
-    card.classList.toggle('is-next');
+    card.classList.click('is-next');
 });
 
 var j = 0;
@@ -28,6 +28,7 @@ function nextCard() {
     document.querySelector('.cardBack').innerHTML = objects[k].back;
     
 };
+
 var k = j % objects.length
 var obj = objects[k].id
 const url = "/_mark_known"
