@@ -50,11 +50,14 @@ class Card(db.Model):
     front = db.Column(db.String(300))
     back = db.Column(db.String(1000))
     known = db.Column(db.Boolean, default=False)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime, index=True, 
+            default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+    # low lev implementation of shuffle
     def card_list(author_id):
-        cards = Card.query.filter(Card.user_id == author_id, Card.known==False).all()
+        cards = Card.query.filter(Card.user_id == author_id,
+                Card.known==False).all()
         finish = []
         while(len(finish) < len(cards)):
             k = random.randint(0,(len(cards)-1))
@@ -68,6 +71,7 @@ class Card(db.Model):
             finish.append(cards[k])
         return finish
 
+    # leveraging custom json encoder, iterate through cards to append to list
     def jsonify_cards(cards):
         res = []
         for i in cards:

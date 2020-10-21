@@ -7,7 +7,6 @@ from app.models import User, Card, JSONEncoder
 from werkzeug.urls import url_parse
 from datetime import datetime
 
-
 @app.route('/')
 @app.route('/index')
 @login_required
@@ -52,7 +51,6 @@ def register():
         db.session.commit()
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
-
 
 @app.route('/cards/<username>') # '<>' denotes dynamic componenet
 @login_required
@@ -110,24 +108,13 @@ def learn():
     cards = Card.jsonify_cards(cards)
     return render_template('learn.html', cards=cards, user=current_user)
 
-@app.route('/learntest')
-@login_required
-def learntest():
-    cards = Card.card_list(current_user.id)
-    cards = Card.jsonify_cards(cards)
-    return render_template('learntest.html', cards=cards, user=current_user)
-
 @app.route('/_mark_known', methods=['POST'])
 def mark_known():
     card_id = request.get_json()
     card = Card.query.filter_by(id=card_id).update(dict(known=True))
     db.session.commit()
     response = make_response(jsonify({"message": "OK"}), 200)
-    flash('marked as known')
     return response
-
-
- 
 
 @app.before_request
 def before_request():

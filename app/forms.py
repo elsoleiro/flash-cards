@@ -43,6 +43,3 @@ class AddCard(FlaskForm):
     
 class NextCard(FlaskForm):
     submit = SubmitField('Submit')
-
-
-
