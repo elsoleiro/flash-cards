@@ -27,8 +27,8 @@
 }
 
 .card__inner.is-flipped {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
 }
 
 .card__face {
@@ -55,16 +55,15 @@
     justify-content: center;
 }
 
- /* The animation code */
-@keyframes example {
+@keyframes next {
   0%   {left:0px; top:0px;}
-  50%  {left:200px; top:200px;}
+  50%  {left:0px; top:100px;}
   100% {left:0px; top:0px;}
 }
 
-/* The element to apply the animation to */
 .is-next {
   position: relative;
-  animation-name: example;
+  animation-name: next;
   animation-duration: 1s;
 }
+

@@ -10,13 +10,19 @@ const card = document.querySelector('.card__inner');
 card.addEventListener('click', () => {
     card.classList.toggle('is-flipped');
 });
-
+// retrieve ele
 const nextButton = document.querySelector('.nextButton');
-
-nextButton.addEventListener('click', () => {
-    card.classList.toggle('is-next');
+nextButton.addEventListener('click', (e) => {
+    // reset transition
+    e.preventDefault;
+    // remove class
+    card.classList.remove('is-next');
+    // black magic
+    void card.offsetWidth;
+    // re-add class
+    card.classList.add('is-next');
     
-});
+}, false);
 
 var j = 0;
 var cardFront = document.querySelector('.cardFront').innerHTML = objects[j].front
