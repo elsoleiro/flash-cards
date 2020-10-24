@@ -4,7 +4,7 @@ this module stores web form classes
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.widgets import TextArea
-from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
+from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
 from app.models import User
 
 class LoginForm(FlaskForm):
@@ -16,9 +16,11 @@ class LoginForm(FlaskForm):
 class RegistrationForm(FlaskForm):
     username = StringField('username', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired(), Email()])
-    password = StringField('password', validators=[DataRequired()])
+    password = StringField('password', validators=[DataRequired(),
+        Length(min=8, max=20)])
     password2 = StringField(
-            'repeat password', validators=[DataRequired(), EqualTo('password')])
+            'repeat password', validators=[DataRequired(), EqualTo('password'),
+                Length(min=8, max=20)])
     submit = SubmitField('register')
 
     def validate_username(self, username):
