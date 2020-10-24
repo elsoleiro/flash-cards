@@ -20,6 +20,6 @@ flask package.
 __name__ is passed to the Flask class, __name__ is a predefined variable
 which is set to the name of the module in which it is used.
 
-flask use the location of the module passed here as a starting point
+flask uses the location of the module passed here as a starting point
 '''
 
