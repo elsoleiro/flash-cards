@@ -15,7 +15,7 @@
         </p>
 
         <p>
-            {{ form.password.label(class="form-control-label") }}<br>
+            {{ form.password.label }}<br>
             {{ form.password(size=32) }}
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
@@ -31,4 +31,14 @@
 <div class="d-flex justify-content-center">
     <p>new user? <a href="{{ url_for('register') }}"> register </a></p>
 </div>
+        <script type="text/javascript">
+    function myFunction() {
+    let x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+        </script>
 {% endblock %}
