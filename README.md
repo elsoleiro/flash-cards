@@ -7,3 +7,5 @@
 5. navigate to localhost:5000
 
 ![Login](/images/login.png)
+![Front of Card](/images/learnfront.png)
+![Back of Card](/images/learnback.png)
