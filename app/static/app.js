@@ -51,11 +51,10 @@ function nextCard() {
 
 var obj = objects[k].id
 const url = "/_mark_known"
-const data = obj
 
 // asynchronous fetch for marking a card as known on sqlite, maps to
 async function knownCard() {
-    postData(url, data);
+    postData(url, obj);
 };
 async function postData (url, data) {
   const response = await fetch(url, {
