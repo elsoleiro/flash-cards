@@ -1,3 +1,6 @@
+
+// no longer used
+
 $(document).ready(function(){
     if ($('.learningCard').length != 0) {
 
